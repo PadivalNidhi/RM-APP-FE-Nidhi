@@ -1,0 +1,56 @@
+.card-title-desc {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    --tw-text-opacity: 1;
+    color: rgb(26 74 122 / var(--tw-text-opacity));
+}
+.transaction-item {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+}
+.transaction-item-label {
+    --tw-text-opacity: 1;
+    color: rgb(4 120 87);
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(236 253 245);
+    border-radius: 0.25rem;
+    width:2.5rem;
+    margin-bottom:5px;
+}
+
+.transaction-item-label-red {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38);
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(236 253 245);
+    border-radius: 0.25rem;
+    width:2.5rem;
+    margin-bottom:5px;
+}
+
+.transaction-item-label1 {
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81);
+    flex: 1;
+}
+.transaction-item-label2 {
+    --tw-text-opacity: 1;
+    font-weight: 600;
+    color: rgb(31 41 55);
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
+}
