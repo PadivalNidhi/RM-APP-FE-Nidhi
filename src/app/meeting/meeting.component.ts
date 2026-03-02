@@ -8,6 +8,7 @@ import { ClientConstraintsComponent } from './client-constraints/client-constrai
 import { SummaryFromLastMeeting } from './summary-from-last-meeting/summary-from-last-meeting';
 import { Performance } from "./performance/performance";
 import { LastFiveTransactions } from "./last-five-transactions/last-five-transactions";
+import { RiskIndicators } from "./risk-indicators/risk-indicators";
 
 @Component({
   selector: 'app-meeting',
@@ -21,7 +22,8 @@ import { LastFiveTransactions } from "./last-five-transactions/last-five-transac
     ClientConstraintsComponent,
     SummaryFromLastMeeting,
     Performance,
-    LastFiveTransactions
+    LastFiveTransactions,
+    RiskIndicators
 ],
   templateUrl: './meeting.component.html',
   styleUrls: ['./meeting.component.scss']

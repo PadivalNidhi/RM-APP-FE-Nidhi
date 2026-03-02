@@ -1,0 +1,25 @@
+.card-title-desc {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    --tw-text-opacity: 1;
+    color: rgb(26 74 122);
+  }
+  .riskIndicatorData {
+    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .riskIndicatorDesc {
+    font-size: 12px;
+  }
+  .riskIndicatorItemLabel {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128);
+  } 
+  .riskIndicatorItemValue {
+    --tw-text-opacity: 1;
+    color: rgb(31 41 55);
+    font-weight: 600;
+  }
