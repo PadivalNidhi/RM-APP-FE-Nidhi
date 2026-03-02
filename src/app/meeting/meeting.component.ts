@@ -10,6 +10,7 @@ import { Performance } from "./performance/performance";
 import { LastFiveTransactions } from "./last-five-transactions/last-five-transactions";
 import { RiskIndicators } from "./risk-indicators/risk-indicators";
 import { MarketOutlook } from "./market-outlook/market-outlook";
+import { AiRecommendations } from "./ai-recommendations/ai-recommendations";
 
 @Component({
   selector: 'app-meeting',
@@ -25,7 +26,8 @@ import { MarketOutlook } from "./market-outlook/market-outlook";
     Performance,
     LastFiveTransactions,
     RiskIndicators,
-    MarketOutlook
+    MarketOutlook,
+    AiRecommendations
 ],
   templateUrl: './meeting.component.html',
   styleUrls: ['./meeting.component.scss']

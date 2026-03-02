@@ -1,0 +1,102 @@
+.card-title-desc {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    --tw-text-opacity: 1;
+    color: rgb(26 74 122);
+  }
+.ai-recommendations-subheader {
+    display: flex;
+    font-size: 11px;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.ai-recommendations-subheader-icon {
+    --tw-text-opacity: 1;
+    color: rgb(4 120 87);
+    font-weight: 500;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(236 253 245);
+    border-radius: 9999px;
+    gap: 0.25rem;
+    align-items: center;
+    display: flex;
+}
+.ai-recommendations-subheader-desc {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175);
+}
+.ai-recommendations-content {
+    padding: 0.75rem;
+    border-width: 1px;
+    border-radius: 0.5rem;
+}
+.ai-recommendations-content-item {
+    gap: 0.5rem;
+    align-items: center;
+    display: flex;
+    margin-bottom:0.25rem;
+}
+.ai-recommendations-content-item-label {
+    --tw-text-opacity: 1;
+    color: rgb(4 120 87);
+    font-weight:700;
+    font-size:10px;
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(209 250 229);
+    border-radius: 0.25rem;
+}
+.ai-recommendations-content-item-label1 {
+    --tw-text-opacity: 1;
+    color: rgb(31 41 55);
+    font-weight: 600;
+    font-size: 13px;
+}
+.ai-recommendations-content-item-label2 {
+   -tw-text-opacity: 1;
+    color: rgb(4 120 87);
+    font-weight: 500;
+    font-size: 10px;
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    padding-left: .375rem;
+    padding-right: .375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(236 253 245);
+    border-radius: 9999px;
+    margin-left: auto;
+}
+
+.ai-recommendations-content-item-value {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99);
+    font-size: 11px;
+}
+.ai-recommendations-content-item-label-blue {
+    --tw-text-opacity: 1;
+    color: rgb(29 78 216);
+    font-weight:700;
+    font-size:10px;
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254);
+    border-radius: 0.25rem;
+}
+.ai-recommendations-content-box {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    margin-bottom: 10px;
+}
