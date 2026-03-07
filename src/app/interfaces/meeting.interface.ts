@@ -7,6 +7,7 @@ export enum MeetingStatus {
 
 export interface Meeting {
   id: string;
+  clientId: string;
   title: string;//mr or mrs or ms
   name: string
   shortName: string;

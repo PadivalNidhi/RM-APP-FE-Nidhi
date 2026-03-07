@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsService } from '../../services/meetings.service';
+import { ClientInfo } from '../../interfaces/client.interface';
 
 @Component({
   selector: 'app-client-profile',
@@ -10,15 +11,16 @@ import { MeetingsService } from '../../services/meetings.service';
   styleUrls: ['../meeting.component.scss','./client-profile.component.scss']
 })
 export class ClientProfileComponent implements OnInit {
-
-  clientProfile: any = {};
-
+  clientProfile = signal<ClientInfo | null>(null); // Property to hold fetched data as signal
+  @Input() clientId: string | null = null;
   constructor(private meetingsService: MeetingsService) { }
 
   ngOnInit(): void {
-    this.meetingsService.getClientProfile().subscribe(data => {
-      this.clientProfile = data;
-    });
+    if (this.clientId !== null) {
+      this.meetingsService.getClientProfile(this.clientId!).subscribe(data => {
+        this.clientProfile.set(data);
+      });
+    }
   }
 
 }

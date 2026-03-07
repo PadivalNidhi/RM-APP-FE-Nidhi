@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingDetailsComponent } from './meeting-details/meeting-details.component';
 import { OverviewComponent } from './overview/overview.component';
@@ -11,6 +11,7 @@ import { LastFiveTransactions } from "./last-five-transactions/last-five-transac
 import { MarketOutlook } from "./market-outlook/market-outlook";
 import { AiRecommendations } from "./ai-recommendations/ai-recommendations";
 import { RiskIndicators } from "./risk-indicators/risk-indicators";
+import { ActivatedRoute } from '@angular/router';
  
 @Component({
   selector: 'app-meeting',
@@ -33,11 +34,15 @@ import { RiskIndicators } from "./risk-indicators/risk-indicators";
   styleUrls: ['./meeting.component.scss']
 })
 export class MeetingComponent implements OnInit {
+  clientUniqueId = signal<string | null>(null);
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.route.queryParamMap.subscribe(params => {
+      this.clientUniqueId.set(params.get('clientId'));
+      // You can now use this.clientUniqueId() in your component
+    });
   }
 
 }

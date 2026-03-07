@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { ClientInfo } from '../interfaces/client.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeetingsService {
-  private apiUrl = 'api/constraints'; // Replace with actual API endpoint
+  private apiUrl = 'http://localhost:8080/client'; // Replace with actual API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -23,17 +24,21 @@ export class MeetingsService {
     ]);
   }
 
-  getClientProfile(): Observable<any> {
+  getClientProfile(clientId:string): Observable<ClientInfo> {
+    
+    return this.http.get<ClientInfo>(`${this.apiUrl}/profile?clientId=${clientId}`);
+    
     // Mock data for now
-    return of({
-      name: 'Mr. Willem van der Berg',
-      age: 52,
-      profession: 'Entrepreneur (Tech)',
-      riskProfile: 'Moderately Offensive (RP4)',
-      esgPreference: 'ESG Leader',
-      serviceModel: 'Advisory — Active Advice',
-      investmentGoals: 'Wealth Growth, Sustainable Impact'
-    });
+
+    // return of({
+    //   name: 'Mr. Willem van der Berg',
+    //   age: 52,
+    //   profession: 'Entrepreneur (Tech)',
+    //   riskProfile: 'Moderately Offensive (RP4)',
+    //   esgPreference: 'ESG Leader',
+    //   serviceModel: 'Advisory — Active Advice',
+    //   investmentGoals: 'Wealth Growth, Sustainable Impact'
+    // });
   }
 
   getLastFiveTransactions(): Observable<any[]> {

@@ -38,7 +38,7 @@
         </span>
 
         <button [class]="'action-btn ' + (meeting.meetingStatus === 1 ? 'status-ready-btn' : '')" 
-                (click)="navigateToMeeting(meeting.id)">
+                (click)="navigateToMeeting(meeting.clientId)">
           @if (meeting.meetingStatus === 1) {
             View Brief
           } @else {
