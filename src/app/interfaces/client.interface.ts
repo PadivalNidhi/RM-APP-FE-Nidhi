@@ -24,3 +24,15 @@ export interface MonthlyPerformance {
   month: string;
   returnPercentage: string;
 }
+
+export interface LastTransactions {
+  transactions: Transaction[];
+}
+
+export interface Transaction {
+  transactionType: string;
+  stockName: string;
+  priceShare: string;
+  currency: string;
+}
+

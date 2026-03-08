@@ -6,13 +6,13 @@
         </h3>
       </div>
       <div>
-        <div class="transaction-item" *ngFor="let transaction of transactions">
-            <span class="transaction-item-label" [ngClass]="{'transaction-item-label-red': transaction.type === 'SELL', 'transaction-item-label-green': transaction.type === 'BUY'}">
-                {{ transaction.type }}
+        <div class="transaction-item" *ngFor="let transaction of transactions()">
+            <span class="transaction-item-label" [ngClass]="{'transaction-item-label-red': transaction.transactionType === 'SELL', 'transaction-item-label-green': transaction.transactionType === 'BUY'}">
+                {{ transaction.transactionType }}
             </span>
-            <span class="transaction-item-label1">{{ transaction.description }}</span>
+            <span class="transaction-item-label1">{{ transaction.stockName }}</span>
             <span class="transaction-item-label2">
-                €{{ transaction.amount | number:'1.0-0' }} EUR
+                €{{ transaction.priceShare}} EUR
             </span>
         </div>
       </div>

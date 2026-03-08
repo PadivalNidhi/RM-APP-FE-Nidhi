@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsService } from '../../services/meetings.service';
+import { LastTransactions, Transaction } from '../../interfaces/client.interface';
 
 @Component({
   selector: 'app-last-five-transactions',
@@ -11,19 +12,22 @@ import { MeetingsService } from '../../services/meetings.service';
 })
 export class LastFiveTransactions implements OnInit {
 
-  transactions: any[] = [];
+  transactions = signal<Transaction[]>([]);
+
+    @Input() clientId: string | null = null;
+
   transactionTypes: { sell: string; buy: string } = { sell: '', buy: '' };
 
   constructor(private meetingsService: MeetingsService) { }
 
   ngOnInit(): void {
-    this.meetingsService.getLastFiveTransactions().subscribe(data => {
-      this.transactions = data;
-    });
+    if (this.clientId) {
+      this.meetingsService.getLastFiveTransactions(this.clientId).subscribe(data => {
+        this.transactions.set(data.transactions);
+      });
+    }
 
-    // this.meetingsService.getTransactionTypes().subscribe(types => {
-    //   this.transactionTypes = types;
-    // });
+  
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { ClientConstraints, ClientInfo, ClientPerformance } from '../interfaces/client.interface';
+import { ClientConstraints, ClientInfo, ClientPerformance, LastTransactions } from '../interfaces/client.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +20,9 @@ export class MeetingsService {
     return this.http.get<ClientInfo>(`${this.apiUrl}/profile?clientId=${clientId}`);
   }
 
-  getLastFiveTransactions(): Observable<any[]> {
-    // Mock data for now
-    return of([
-      { date: '2026-03-01', description: 'Bought 100 shares of XYZ', amount: -5000, type: 'SELL' },
-      { date: '2026-02-25', description: 'Sold 50 shares of ABC', amount: 2500, type: 'BUY' },
-      { date: '2026-02-20', description: 'Dividend from DEF', amount: 300, type: 'BUY' },
-      { date: '2026-02-15', description: 'Bought 200 shares of GHI', amount: -10000, type: 'SELL' },
-      { date: '2026-02-10', description: 'Interest from Savings', amount: 150, type: 'BUY' }
-    ]);
+  getLastFiveTransactions(clientId:string): Observable<LastTransactions> {
+    //last-transactions
+    return this.http.get<LastTransactions>(`${this.apiUrl}/last-transactions?clientId=${clientId}`);
   }
 
   getSummaryFromLastMeeting(): Observable<any> {
