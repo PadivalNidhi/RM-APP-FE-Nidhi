@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsService } from '../../services/meetings.service';
+import { ClientMeetingSummary } from '../../interfaces/client.interface';
 
 @Component({
   selector: 'app-summary-from-last-meeting',
@@ -10,17 +11,17 @@ import { MeetingsService } from '../../services/meetings.service';
   styleUrls: ['../meeting.component.scss','./summary-from-last-meeting.scss']
 })
 export class SummaryFromLastMeeting implements OnInit {
-  summaryData: any; // Property to hold fetched data
+  summaryData = signal<ClientMeetingSummary | null>(null);
+  @Input() clientId: string | null = null;
 
   constructor(private meetingsService: MeetingsService) { }
 
   ngOnInit(): void {
-    this.getSummaryData();
-  }
+  if (this.clientId) {
+      this.meetingsService.getSummaryFromLastMeeting(this.clientId).subscribe(data => {
+        this.summaryData.set(data);
+      });  
+    }
 
-  getSummaryData(): void {
-    this.meetingsService.getSummaryFromLastMeeting().subscribe(data => {
-      this.summaryData = data;
-    });
+    }
   }
-}

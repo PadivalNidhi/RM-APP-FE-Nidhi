@@ -21,19 +21,19 @@
       <div *ngIf="summaryData">
         <p class="card-content-desc">
             Last meeting date: 
-            {{ summaryData.lastMeetingDate }}
+            {{ summaryData()?.lastMeetingDate }}
         </p>
         <p class="card-heading-desc">
             <span class="card-heading-content-desc">
                 Main Discussion Points: 
             </span>
-            {{ summaryData.mainDiscussionPoints }}
+            {{ summaryData()?.mainDiscussionPoints }}
         </p>
         <p class="card-heading-desc">
             <span class="card-heading-content-desc">
                 Client Questions: 
             </span>
-            {{ summaryData.clientQuestions }}
+            {{ summaryData()?.clientQuestions }}
         </p>
       </div>
       <div *ngIf="!summaryData">

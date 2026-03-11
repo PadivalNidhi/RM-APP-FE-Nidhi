@@ -91,3 +91,9 @@ export interface AssetAllocationItem {
   bandwidth: string;
   inRange: string;
 }
+
+export interface ClientMeetingSummary {
+  lastMeetingDate: string;
+  mainDiscussionPoints: string[];
+  clientQuestions: string[];
+}

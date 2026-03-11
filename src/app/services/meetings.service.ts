@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { AIRecommendationsInfo, ClientConstraints, ClientInfo, ClientPerformance, ClientPortfolioOverview, LastTransactions, MarketOutlookInfo, PersonalAspect, RiskIndicator } from '../interfaces/client.interface';
+import { AIRecommendationsInfo, ClientConstraints, ClientInfo, ClientMeetingSummary, ClientPerformance, ClientPortfolioOverview, LastTransactions, MarketOutlookInfo, PersonalAspect, RiskIndicator } from '../interfaces/client.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +25,8 @@ export class MeetingsService {
     return this.http.get<LastTransactions>(`${this.apiUrl}/last-transactions?clientId=${clientId}`);
   }
 
-  getSummaryFromLastMeeting(): Observable<any> {
-    // Mock data for now
-    return of({
-      lastMeetingDate: '2026-01-20',
-      mainDiscussionPoints: 'Client\'s business performed well in H2 2025 with strong revenue growth. He had accumulated €800K cash from dividends and business income which he wanted to deploy. His preference was to increase sustainable European equity exposure, particularly in technology and green energy. Discussed impact of ECB rate trajectory on bond allocation. Agreed that RM would prepare specific ESG small-cap options for next meeting.',
-      clientQuestions: 'What is the outlook for European sustainable tech? Should I reduce my bond allocation given the rate environment?'
-    });
+  getSummaryFromLastMeeting(clientId:string): Observable<ClientMeetingSummary> {
+    return this.http.get<ClientMeetingSummary>(`${this.apiUrl}/last-meeting-summary?clientId=${clientId}`);
   }
 
   getRiskIndicators(clientId: string): Observable<RiskIndicator> {
