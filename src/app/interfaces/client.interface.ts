@@ -72,3 +72,22 @@ export interface Recommendation {
     priority: string;
     rationale: string;
 }
+
+export interface RiskIndicator {
+  concentrationRisk: string;
+  sharpeRatio: string;
+  valueAtRisk: string;
+  maxDrawdown: string;
+}
+
+export interface ClientPortfolioOverview {
+  portfolioMarketValue: string;
+  assetAllocation: AssetAllocationItem[];
+}
+
+export interface AssetAllocationItem {
+  assetClass: string;
+  current: string;
+  bandwidth: string;
+  inRange: string;
+}

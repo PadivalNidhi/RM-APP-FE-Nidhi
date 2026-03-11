@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { AIRecommendationsInfo, ClientConstraints, ClientInfo, ClientPerformance, LastTransactions, MarketOutlookInfo, PersonalAspect } from '../interfaces/client.interface';
+import { AIRecommendationsInfo, ClientConstraints, ClientInfo, ClientPerformance, ClientPortfolioOverview, LastTransactions, MarketOutlookInfo, PersonalAspect, RiskIndicator } from '../interfaces/client.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,28 +34,24 @@ export class MeetingsService {
     });
   }
 
-  getRiskIndicators(): Observable<any[]> {
-    // Mock data for now
-    return of([
-      { label: 'Concentration Risk', value: '14% (ASML)' },
-      { label: 'Sharpe Ratio', value: '1.4' },
-      { label: 'VaR (95%)', value: '€425K' },
-      { label: 'Max Drawdown (12M)', value: '-6.2%' }
-    ]);
+  getRiskIndicators(clientId: string): Observable<RiskIndicator> {
+        return this.http.get<RiskIndicator>(`${this.apiUrl}/risk-indicators?clientId=${clientId}`);
   }
 
-  getOverviewData(): Observable<any> {
+  getOverviewData(clientId: string): Observable<ClientPortfolioOverview> {
+        return this.http.get<ClientPortfolioOverview>(`${this.apiUrl}/portfolio?clientId=${clientId}`);
+
     // Mock data for now
-    return of({
-      marketValue: '€12.5M EUR',
-      assets: [
-        { name: 'Equities', current: '52%', bandwidth: '40% - 65%', inRange: 'YES', color: '#2563eb' },
-        { name: 'Fixed Income', current: '25%', bandwidth: '15% - 35%', inRange: 'YES', color: '#0891b2' },
-        { name: 'Real Estate', current: '10%', bandwidth: '5% - 15%', inRange: 'YES', color: '#ea580c' },
-        { name: 'Alternatives', current: '7%', bandwidth: '0% - 15%', inRange: 'YES', color: '#7c3aed' },
-        { name: 'Liquidity', current: '6%', bandwidth: '2% - 10%', inRange: 'YES', color: '#94a3b8' }
-      ]
-    });
+    // return of({
+    //   marketValue: '€12.5M EUR',
+    //   assets: [
+    //     { name: 'Equities', current: '52%', bandwidth: '40% - 65%', inRange: 'YES', color: '#2563eb' },
+    //     { name: 'Fixed Income', current: '25%', bandwidth: '15% - 35%', inRange: 'YES', color: '#0891b2' },
+    //     { name: 'Real Estate', current: '10%', bandwidth: '5% - 15%', inRange: 'YES', color: '#ea580c' },
+    //     { name: 'Alternatives', current: '7%', bandwidth: '0% - 15%', inRange: 'YES', color: '#7c3aed' },
+    //     { name: 'Liquidity', current: '6%', bandwidth: '2% - 10%', inRange: 'YES', color: '#94a3b8' }
+    //   ]
+    // });
   }
 
   getPersonalAspectsData(clientId:string): Observable<PersonalAspect> {

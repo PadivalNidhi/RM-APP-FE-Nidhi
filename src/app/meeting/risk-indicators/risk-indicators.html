@@ -3,18 +3,44 @@
       <div class="card-header">
         <h3 class="card-title-desc">Risk Indicators</h3>
       </div>
-      <div class="riskIndicatorData" *ngIf="riskData">
-        <div class="riskIndicatorDesc" *ngFor="let indicator of riskData">
+
+      <div class="riskIndicatorData" *ngIf="riskData(); else loading">
+        <div class="riskIndicatorDesc">
             <span class="riskIndicatorItemLabel">
-                {{ indicator.label }}: 
+                Concentration Risk: 
             </span>
             <span class="riskIndicatorItemValue">
-                {{ indicator.value }}
+                {{ riskData().concentrationRisk }}
+            </span>
+           
+        </div>
+        <div class="riskIndicatorDesc">
+          <span class="riskIndicatorItemLabel">
+                Sharpe Ratio: 
+            </span>
+            <span class="riskIndicatorItemValue">
+                {{ riskData().sharpeRatio }}
             </span>
         </div>
+        <div class="riskIndicatorDesc">
+            <span class="riskIndicatorItemLabel">
+                VaR (95%): 
+            </span>
+            <span class="riskIndicatorItemValue">
+                {{ riskData().valueAtRisk }}
+            </span>
+        </div>
+        <div class="riskIndicatorDesc">
+            <span class="riskIndicatorItemLabel">
+                Max Drawdown (12M): 
+            </span>
+            <span class="riskIndicatorItemValue">
+                {{ riskData().maxDrawdown }}
+            </span>
+          </div>
       </div>
-      <div *ngIf="!riskData">
-        <p>Loading risk indicators...</p>
-      </div>
+    <ng-template #loading>
+      <p>Loading personal aspects...</p>
+    </ng-template>
     </div>
 </div>

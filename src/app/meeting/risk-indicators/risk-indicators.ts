@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsService } from '../../services/meetings.service';
+import { RiskIndicator } from '../../interfaces/client.interface';
 
 @Component({
   selector: 'app-risk-indicators',
@@ -10,17 +11,18 @@ import { MeetingsService } from '../../services/meetings.service';
   styleUrls: ['../meeting.component.scss','./risk-indicators.scss']
 })
 export class RiskIndicators implements OnInit {
-  riskData: any; // Property to hold fetched data
+  riskData = signal<RiskIndicator>({ concentrationRisk: '', sharpeRatio: '', valueAtRisk: '', maxDrawdown: '' });
+  @Input() clientId: string | null = null;
 
   constructor(private meetingsService: MeetingsService) { }
 
-  ngOnInit(): void {
-    this.getRiskData();
-  }
+ngOnInit(): void {
+  if (this.clientId) {
+      this.meetingsService.getRiskIndicators(this.clientId).subscribe(data => {
+        this.riskData.set(data);
+      });  
+    }
 
-  getRiskData(): void {
-    this.meetingsService.getRiskIndicators().subscribe(data => {
-      this.riskData = data;
-    });
-  }
+    }
+
 }
