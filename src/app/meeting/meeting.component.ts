@@ -12,6 +12,8 @@ import { MarketOutlook } from "./market-outlook/market-outlook";
 import { AiRecommendations } from "./ai-recommendations/ai-recommendations";
 import { RiskIndicators } from "./risk-indicators/risk-indicators";
 import { ActivatedRoute, Router } from '@angular/router';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
  
 @Component({
   selector: 'app-meeting',
@@ -50,6 +52,19 @@ export class MeetingComponent implements OnInit {
   }
   goBackToMeetings() {
     this.router.navigate(['/']);
+  }
+  exportPDF() {
+    // @ts-ignore
+    const element = document.querySelector('.max-width-container-overview');
+    // @ts-ignore
+    html2canvas(element, { scale: 2, useCORS: true }).then(canvas => {
+      // @ts-ignore
+      const imgData = canvas.toDataURL('image/png');
+      // @ts-ignore
+      const pdf = new window.jspdf.jsPDF({ orientation: 'portrait', unit: 'px', format: [canvas.width, canvas.height] });
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save('meeting.pdf');
+    });
   }
 
 }
