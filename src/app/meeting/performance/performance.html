@@ -9,23 +9,10 @@
           <span class="content-header-desc1">{{ data.ytdReturn }}</span>
           <span class="content-header-desc2">YTD Return</span>
         </div>
-        <svg width="340" height="70" class="overflow-visible">
-          <defs>
-            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2563eb" stop-opacity="0.15"></stop>
-              <stop offset="100%" stop-color="#2563eb" stop-opacity="0.02"></stop>
-            </linearGradient>
-          </defs>
-          <path d="M0,70 L0,51.43939393939394 30.90909090909091,45.25252525252526 61.81818181818182,39.06565656565657 92.72727272727272,32.87878787878788 123.63636363636364,25.80808080808081 154.54545454545453,18.737373737373744 185.45454545454544,15.202020202020208 216.36363636363637,17.853535353535356 247.27272727272728,12.550505050505059 278.1818181818182,9.89898989898991 309.09090909090907,8.131313131313135 340,6.363636363636367 L340,70 Z" 
-            fill="url(#sparkGrad)">
-          </path>
-          <polyline points="0,51.43939393939394 30.90909090909091,45.25252525252526 61.81818181818182,39.06565656565657 92.72727272727272,32.87878787878788 123.63636363636364,25.80808080808081 154.54545454545453,18.737373737373744 185.45454545454544,15.202020202020208 216.36363636363637,17.853535353535356 247.27272727272728,12.550505050505059 278.1818181818182,9.89898989898991 309.09090909090907,8.131313131313135 340,6.363636363636367" 
-            fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round">
-          </polyline>
-        </svg>
-        <div class="graph-x-axis">
-          <span *ngFor="let label of data.monthlyData">{{ label.month }}</span>
+        <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+          <canvas id="performanceChart"></canvas>
         </div>
+        
         
       </div>
     </ng-container>
