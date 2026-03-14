@@ -22,15 +22,15 @@
       <div class="card-content">
         <div class="info-row">
           <span class="info-label">Client Name</span>
-          <span class="info-value">Mr. Willem van der Berg</span>
+          <span class="info-value">{{ meetingDetails()?.name }}</span>
         </div>
         <div class="info-row">
           <span class="info-label">Meeting Date &amp; Time</span>
-          <span class="info-value">15 Feb 2026, 10:00 AM</span>
+          <span class="info-value">{{ meetingDetails()?.date }},{{ meetingDetails()?.time }}</span>
         </div>
         <div class="info-row">
           <span class="info-label">Location / Platform</span>
-          <span class="info-value">In person — Amsterdam — Zuid office</span>
+          <span class="info-value">{{ meetingDetails()?.location }}</span>
         </div>
         <div class="info-row">
           <span class="info-label">Relationship Manager</span>

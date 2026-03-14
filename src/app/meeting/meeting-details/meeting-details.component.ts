@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingsService } from '../../services/meetings.service';
+import { Meeting } from '../../interfaces/meeting.interface';
 
 @Component({
   selector: 'app-meeting-details',
@@ -10,20 +11,17 @@ import { MeetingsService } from '../../services/meetings.service';
   styleUrls: ['../meeting.component.scss','./meeting-details.component.scss']
 })
 export class MeetingDetailsComponent implements OnInit {
+  @Input() clientId: string | null = null;
+  @Input() meeting: Meeting | null = null;
 
-  meetingDetails: any = {};
+  meetingDetails = signal<Meeting | null>(null); // Property to hold fetched data as signal
 
   constructor(private meetingsService: MeetingsService) { }
 
   ngOnInit(): void {
-    // this.meetingsService.getConstraints().subscribe(data => {
-    //   this.meetingDetails = {
-    //     clientName: data[0],
-    //     meetingDateTime: data[1],
-    //     location: data[2],
-    //     relationshipManager: data[3]
-    //   };
-    // }); 
+
+      this.meetingDetails.set(this.meeting);
+
   }
 
 }
