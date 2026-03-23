@@ -1,0 +1,38 @@
+<div class="talking-points-card">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="icon">💡</div>
+    <h3>AI-Generated Talking Points</h3>
+  </div>
+
+  <!-- Grid -->
+  <div class="points-grid">
+
+    <ng-container *ngFor="let type of pointTypes">
+
+      <div *ngIf="getPointsByType(type.key).length">
+
+        <!-- Section Title -->
+        <p class="section-title">
+          {{ type.label }}
+        </p>
+
+        <!-- Points -->
+        <div class="points-list">
+          <div
+            *ngFor="let point of getPointsByType(type.key)"
+            class="point-item"
+            [ngClass]="type.class"
+          >
+            {{ point.text }}
+          </div>
+        </div>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</div>
